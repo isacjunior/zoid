@@ -262,6 +262,9 @@ export function propsToQuery(propsDef, props) {
             });
         });
     })).then(function () {
+        Object.keys(params).forEach(function (key) {
+            params[key] = escape(params[key]);
+        });
         return params;
     });
 }

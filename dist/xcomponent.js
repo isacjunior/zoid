@@ -1152,7 +1152,7 @@
                 if (!frame.contentWindow) return !0;
                 if (!frame.parentNode) return !0;
                 var doc = frame.ownerDocument;
-                return !(!doc || !doc.body || doc.body.contains(frame));
+                return !(!doc || !doc.documentElement || doc.documentElement.contains(frame));
             }
             var iframeWindows = [], iframeFrames = [];
             function isWindowClosed(win) {
@@ -4957,6 +4957,9 @@
                             });
                         });
                     })).then(function() {
+                        Object.keys(params).forEach(function(key) {
+                            params[key] = escape(params[key]);
+                        });
                         return params;
                     })) ]).then(function(_ref7) {
                         var url = _ref7[0], query = _ref7[1];
